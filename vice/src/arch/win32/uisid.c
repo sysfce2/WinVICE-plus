@@ -69,6 +69,10 @@ static void enable_general_sid_controls(HWND hwnd)
     EnableWindow(GetDlgItem(hwnd, IDC_SID_STEREOADDRESS), sel_extra_sids >= 1);
     EnableWindow(GetDlgItem(hwnd, IDC_SID_TRIPLEADDRESS), sel_extra_sids >= 2);
     EnableWindow(GetDlgItem(hwnd, IDC_SID_QUADADDRESS), sel_extra_sids >= 3);
+    EnableWindow(GetDlgItem(hwnd, IDC_SID_5THADDRESS), sel_extra_sids >= 4);
+    EnableWindow(GetDlgItem(hwnd, IDC_SID_6THADDRESS), sel_extra_sids >= 5);
+    EnableWindow(GetDlgItem(hwnd, IDC_SID_7THADDRESS), sel_extra_sids >= 6);
+    EnableWindow(GetDlgItem(hwnd, IDC_SID_8THADDRESS), sel_extra_sids >= 7);
 }
 
 static void enable_resid_sid_controls(HWND hwnd)
@@ -129,6 +133,10 @@ static uilib_localize_dialog_param general_sid_dialog_trans[] = {
     { IDC_SID_STEREOADDRESS_LABEL, IDS_SID_STEREOADDRESS_LABEL, 0 },
     { IDC_SID_TRIPLEADDRESS_LABEL, IDS_SID_TRIPLEADDRESS_LABEL, 0 },
     { IDC_SID_QUADADDRESS_LABEL, IDS_SID_QUADADDRESS_LABEL, 0 },
+    { IDC_SID_5THADDRESS_LABEL, IDS_SID_5THADDRESS_LABEL, 0 },
+    { IDC_SID_6THADDRESS_LABEL, IDS_SID_6THADDRESS_LABEL, 0 },
+    { IDC_SID_7THADDRESS_LABEL, IDS_SID_7THADDRESS_LABEL, 0 },
+    { IDC_SID_8THADDRESS_LABEL, IDS_SID_8THADDRESS_LABEL, 0 },
     { IDC_SID_FILTERS, IDS_SID_FILTERS, 0 },
     { 0, 0, 0 }
 };
@@ -163,6 +171,10 @@ static void init_general_sid_dialog(HWND hwnd)
     SendMessage(sid_hwnd, CB_ADDSTRING, 0, (LPARAM)TEXT("1"));
     SendMessage(sid_hwnd, CB_ADDSTRING, 0, (LPARAM)TEXT("2"));
     SendMessage(sid_hwnd, CB_ADDSTRING, 0, (LPARAM)TEXT("3"));
+    SendMessage(sid_hwnd, CB_ADDSTRING, 0, (LPARAM)TEXT("4"));
+    SendMessage(sid_hwnd, CB_ADDSTRING, 0, (LPARAM)TEXT("5"));
+    SendMessage(sid_hwnd, CB_ADDSTRING, 0, (LPARAM)TEXT("6"));
+    SendMessage(sid_hwnd, CB_ADDSTRING, 0, (LPARAM)TEXT("7"));
     SendMessage(sid_hwnd, CB_SETCURSEL, (WPARAM)sel_extra_sids, 0);
 
     resources_get_int("SidStereoAddressStart", &res_value);
@@ -176,6 +188,22 @@ static void init_general_sid_dialog(HWND hwnd)
     resources_get_int("SidQuadAddressStart", &res_value);
     sid_hwnd = GetDlgItem(hwnd, IDC_SID_QUADADDRESS);
     CreateAndGetSidAddress(sid_hwnd, 0, res_value, "SidQuadAddressStart");
+
+    resources_get_int("Sid5thAddressStart", &res_value);
+    sid_hwnd = GetDlgItem(hwnd, IDC_SID_5THADDRESS);
+    CreateAndGetSidAddress(sid_hwnd, 0, res_value, "Sid5thAddressStart");
+
+    resources_get_int("Sid6thAddressStart", &res_value);
+    sid_hwnd = GetDlgItem(hwnd, IDC_SID_6THADDRESS);
+    CreateAndGetSidAddress(sid_hwnd, 0, res_value, "Sid6thAddressStart");
+
+    resources_get_int("Sid7thAddressStart", &res_value);
+    sid_hwnd = GetDlgItem(hwnd, IDC_SID_7THADDRESS);
+    CreateAndGetSidAddress(sid_hwnd, 0, res_value, "Sid7thAddressStart");
+
+    resources_get_int("Sid8thAddressStart", &res_value);
+    sid_hwnd = GetDlgItem(hwnd, IDC_SID_8THADDRESS);
+    CreateAndGetSidAddress(sid_hwnd, 0, res_value, "Sid8thAddressStart");
 
     ui_sid_engine_model_list = sid_get_engine_model_list();
 
@@ -261,6 +289,64 @@ static void resize_general_sid_dialog(HWND hwnd)
         new_xpos = xpos;
     }
 
+
+    child_hwnd = GetDlgItem(hwnd, IDC_SID_5THADDRESS_LABEL);
+    GetClientRect(child_hwnd, &child_rect.rect);
+    MapWindowPoints(child_hwnd, hwnd, &child_rect.point, 2);
+    uilib_get_general_window_extents(child_hwnd, &xsize, &ysize);
+    MoveWindow(child_hwnd, child_rect.rect.left, child_rect.rect.top, xsize + 20, child_rect.rect.bottom - child_rect.rect.top, TRUE);
+    xpos = child_rect.rect.left + xsize + 20 + 10;
+
+    if (xpos > new_xpos) {
+        new_xpos = xpos;
+    }
+
+    child_hwnd = GetDlgItem(hwnd, IDC_SID_6THADDRESS_LABEL);
+    GetClientRect(child_hwnd, &child_rect.rect);
+    MapWindowPoints(child_hwnd, hwnd, &child_rect.point, 2);
+    uilib_get_general_window_extents(child_hwnd, &xsize, &ysize);
+    MoveWindow(child_hwnd, child_rect.rect.left, child_rect.rect.top, xsize + 20, child_rect.rect.bottom - child_rect.rect.top, TRUE);
+    xpos = child_rect.rect.left + xsize + 20 + 10;
+
+    if (xpos > new_xpos) {
+        new_xpos = xpos;
+    }
+
+    child_hwnd = GetDlgItem(hwnd, IDC_SID_7THADDRESS_LABEL);
+    GetClientRect(child_hwnd, &child_rect.rect);
+    MapWindowPoints(child_hwnd, hwnd, &child_rect.point, 2);
+    uilib_get_general_window_extents(child_hwnd, &xsize, &ysize);
+    MoveWindow(child_hwnd, child_rect.rect.left, child_rect.rect.top, xsize + 20, child_rect.rect.bottom - child_rect.rect.top, TRUE);
+    xpos = child_rect.rect.left + xsize + 20 + 10;
+
+    if (xpos > new_xpos) {
+        new_xpos = xpos;
+    }
+
+    child_hwnd = GetDlgItem(hwnd, IDC_SID_8THADDRESS_LABEL);
+    GetClientRect(child_hwnd, &child_rect.rect);
+    MapWindowPoints(child_hwnd, hwnd, &child_rect.point, 2);
+    uilib_get_general_window_extents(child_hwnd, &xsize, &ysize);
+    MoveWindow(child_hwnd, child_rect.rect.left, child_rect.rect.top, xsize + 20, child_rect.rect.bottom - child_rect.rect.top, TRUE);
+    xpos = child_rect.rect.left + xsize + 20 + 10;
+
+    if (xpos > new_xpos) {
+        new_xpos = xpos;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     child_hwnd = GetDlgItem(hwnd, IDC_SID_EXTRA_AMOUNT);
     GetClientRect(child_hwnd, &child_rect.rect);
     MapWindowPoints(child_hwnd, hwnd, &child_rect.point, 2);
@@ -277,6 +363,26 @@ static void resize_general_sid_dialog(HWND hwnd)
     MoveWindow(child_hwnd, new_xpos, child_rect.rect.top, child_rect.rect.right - child_rect.rect.left, child_rect.rect.bottom - child_rect.rect.top, TRUE);
 
     child_hwnd = GetDlgItem(hwnd, IDC_SID_QUADADDRESS);
+    GetClientRect(child_hwnd, &child_rect.rect);
+    MapWindowPoints(child_hwnd, hwnd, &child_rect.point, 2);
+    MoveWindow(child_hwnd, new_xpos, child_rect.rect.top, child_rect.rect.right - child_rect.rect.left, child_rect.rect.bottom - child_rect.rect.top, TRUE);
+
+    child_hwnd = GetDlgItem(hwnd, IDC_SID_5THADDRESS);
+    GetClientRect(child_hwnd, &child_rect.rect);
+    MapWindowPoints(child_hwnd, hwnd, &child_rect.point, 2);
+    MoveWindow(child_hwnd, new_xpos, child_rect.rect.top, child_rect.rect.right - child_rect.rect.left, child_rect.rect.bottom - child_rect.rect.top, TRUE);
+
+    child_hwnd = GetDlgItem(hwnd, IDC_SID_6THADDRESS);
+    GetClientRect(child_hwnd, &child_rect.rect);
+    MapWindowPoints(child_hwnd, hwnd, &child_rect.point, 2);
+    MoveWindow(child_hwnd, new_xpos, child_rect.rect.top, child_rect.rect.right - child_rect.rect.left, child_rect.rect.bottom - child_rect.rect.top, TRUE);
+
+    child_hwnd = GetDlgItem(hwnd, IDC_SID_7THADDRESS);
+    GetClientRect(child_hwnd, &child_rect.rect);
+    MapWindowPoints(child_hwnd, hwnd, &child_rect.point, 2);
+    MoveWindow(child_hwnd, new_xpos, child_rect.rect.top, child_rect.rect.right - child_rect.rect.left, child_rect.rect.bottom - child_rect.rect.top, TRUE);
+
+    child_hwnd = GetDlgItem(hwnd, IDC_SID_8THADDRESS);
     GetClientRect(child_hwnd, &child_rect.rect);
     MapWindowPoints(child_hwnd, hwnd, &child_rect.point, 2);
     MoveWindow(child_hwnd, new_xpos, child_rect.rect.top, child_rect.rect.right - child_rect.rect.left, child_rect.rect.bottom - child_rect.rect.top, TRUE);
@@ -517,6 +623,18 @@ static void end_general_dialog(HWND hwnd)
 
     sid_hwnd = GetDlgItem(hwnd, IDC_SID_QUADADDRESS);
     CreateAndGetSidAddress(sid_hwnd, 1, (int)SendMessage(sid_hwnd, CB_GETCURSEL, 0, 0), "SidQuadAddressStart");
+
+    sid_hwnd = GetDlgItem(hwnd, IDC_SID_5THADDRESS);
+    CreateAndGetSidAddress(sid_hwnd, 1, (int)SendMessage(sid_hwnd, CB_GETCURSEL, 0, 0), "Sid5thAddressStart");
+
+    sid_hwnd = GetDlgItem(hwnd, IDC_SID_6THADDRESS);
+    CreateAndGetSidAddress(sid_hwnd, 1, (int)SendMessage(sid_hwnd, CB_GETCURSEL, 0, 0), "Sid6thAddressStart");
+
+    sid_hwnd = GetDlgItem(hwnd, IDC_SID_7THADDRESS);
+    CreateAndGetSidAddress(sid_hwnd, 1, (int)SendMessage(sid_hwnd, CB_GETCURSEL, 0, 0), "Sid7thAddressStart");
+
+    sid_hwnd = GetDlgItem(hwnd, IDC_SID_8THADDRESS);
+    CreateAndGetSidAddress(sid_hwnd, 1, (int)SendMessage(sid_hwnd, CB_GETCURSEL, 0, 0), "Sid8thAddressStart");
 
     temp = ui_sid_engine_model_list[SendDlgItemMessage(hwnd, IDC_SID_ENGINE_MODEL, CB_GETCURSEL, 0, 0)]->value;
     engine = temp >> 8;

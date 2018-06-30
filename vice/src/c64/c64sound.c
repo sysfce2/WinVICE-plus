@@ -67,6 +67,45 @@ static void machine_sid4_store(uint16_t addr, uint8_t byte)
     sid4_store(addr, byte);
 }
 
+static uint8_t machine_sid5_read(uint16_t addr)
+{
+    return sid5_read(addr);
+}
+
+static void machine_sid5_store(uint16_t addr, uint8_t byte)
+{
+    sid5_store(addr, byte);
+}
+
+static uint8_t machine_sid6_read(uint16_t addr)
+{
+    return sid6_read(addr);
+}
+
+static void machine_sid6_store(uint16_t addr, uint8_t byte)
+{
+    sid6_store(addr, byte);
+}
+
+static uint8_t machine_sid7_read(uint16_t addr)
+{
+    return sid7_read(addr);
+}
+
+static void machine_sid7_store(uint16_t addr, uint8_t byte)
+{
+    sid7_store(addr, byte);
+}
+
+static uint8_t machine_sid8_read(uint16_t addr)
+{
+    return sid8_read(addr);
+}
+
+static void machine_sid8_store(uint16_t addr, uint8_t byte)
+{
+    sid8_store(addr, byte);
+}
 /* ---------------------------------------------------------------------*/
 
 static io_source_t stereo_sid_device = {
@@ -114,9 +153,73 @@ static io_source_t quad_sid_device = {
     0
 };
 
+static io_source_t fifth_sid_device = {
+    "Fifth SID",
+    IO_DETACH_RESOURCE,
+    "SidStereo",
+    0xd480, 0xd49f, 0x1f,
+    1, /* read is always valid */
+    machine_sid5_store,
+    machine_sid5_read,
+    NULL, /* TODO: peek */
+    sid5_dump,
+    0,
+    0,
+    0
+};
+
+static io_source_t sixth_sid_device = {
+    "Sixth SID",
+    IO_DETACH_RESOURCE,
+    "SidStereo",
+    0xd4a0, 0xd4bf, 0x1f,
+    1, /* read is always valid */
+    machine_sid6_store,
+    machine_sid6_read,
+    NULL, /* TODO: peek */
+    sid6_dump,
+    0,
+    0,
+    0
+};
+
+static io_source_t seventh_sid_device = {
+    "Seventh SID",
+    IO_DETACH_RESOURCE,
+    "SidStereo",
+    0xd4c0, 0xd4df, 0x1f,
+    1, /* read is always valid */
+    machine_sid7_store,
+    machine_sid7_read,
+    NULL, /* TODO: peek */
+    sid7_dump,
+    0,
+    0,
+    0
+};
+
+static io_source_t eigth_sid_device = {
+    "Eigth SID",
+    IO_DETACH_RESOURCE,
+    "SidStereo",
+    0xd4e0, 0xd4ff, 0x1f,
+    1, /* read is always valid */
+    machine_sid8_store,
+    machine_sid8_read,
+    NULL, /* TODO: peek */
+    sid8_dump,
+    0,
+    0,
+    0
+};
+
 static io_source_list_t *stereo_sid_list_item = NULL;
 static io_source_list_t *triple_sid_list_item = NULL;
 static io_source_list_t *quad_sid_list_item = NULL;
+static io_source_list_t *fifth_sid_list_item = NULL;
+static io_source_list_t *sixth_sid_list_item = NULL;
+static io_source_list_t *seventh_sid_list_item = NULL;
+static io_source_list_t *eigth_sid_list_item = NULL;
 
 /* ---------------------------------------------------------------------*/
 
@@ -256,6 +359,159 @@ int machine_sid4_check_range(unsigned int sid4_adr)
     return -1;
 }
 
+int machine_sid5_check_range(unsigned int sid_adr)
+{
+    if (machine_class == VICE_MACHINE_C128) {
+        if ((sid_adr >= 0xd400 && sid_adr <= 0xd4e0) || (sid_adr >= 0xd700 && sid_adr <= 0xdfe0)) {
+            sid_5th_address_start = sid_adr;
+            fifth_sid_device.start_address = sid_adr;
+            sid_5th_address_end = sid_adr + 0x1f;
+            fifth_sid_device.end_address = sid_adr + 0x1f;
+            if (fifth_sid_list_item != NULL) {
+                io_source_unregister(fifth_sid_list_item);
+                fifth_sid_list_item = io_source_register(&fifth_sid_device);
+            } else {
+                if (sid_stereo >= 4) {
+                    fifth_sid_list_item = io_source_register(&fifth_sid_device);
+                }
+            }
+            return 0;
+        }
+    } else {
+        if (sid_adr >= 0xd400 && sid_adr <= 0xdfe0) {
+            sid_5th_address_start = sid_adr;
+            fifth_sid_device.start_address = sid_adr;
+            sid_5th_address_end = sid_adr + 0x1f;
+            fifth_sid_device.end_address = sid_adr + 0x1f;
+            if (fifth_sid_list_item != NULL) {
+                io_source_unregister(fifth_sid_list_item);
+                fifth_sid_list_item = io_source_register(&fifth_sid_device);
+            } else {
+                if (sid_stereo >= 4) {
+                    fifth_sid_list_item = io_source_register(&fifth_sid_device);
+                }
+            }
+            return 0;
+        }
+    }
+    return -1;
+}
+
+int machine_sid6_check_range(unsigned int sid_adr)
+{
+    if (machine_class == VICE_MACHINE_C128) {
+        if ((sid_adr >= 0xd400 && sid_adr <= 0xd4e0) || (sid_adr >= 0xd700 && sid_adr <= 0xdfe0)) {
+            sid_6th_address_start = sid_adr;
+            sixth_sid_device.start_address = sid_adr;
+            sid_6th_address_end = sid_adr + 0x1f;
+            sixth_sid_device.end_address = sid_adr + 0x1f;
+            if (sixth_sid_list_item != NULL) {
+                io_source_unregister(sixth_sid_list_item);
+                sixth_sid_list_item = io_source_register(&sixth_sid_device);
+            } else {
+                if (sid_stereo >= 5) {
+                    sixth_sid_list_item = io_source_register(&sixth_sid_device);
+                }
+            }
+            return 0;
+        }
+    } else {
+        if (sid_adr >= 0xd400 && sid_adr <= 0xdfe0) {
+            sid_6th_address_start = sid_adr;
+            sixth_sid_device.start_address = sid_adr;
+            sid_6th_address_end = sid_adr + 0x1f;
+            sixth_sid_device.end_address = sid_adr + 0x1f;
+            if (sixth_sid_list_item != NULL) {
+                io_source_unregister(sixth_sid_list_item);
+                sixth_sid_list_item = io_source_register(&sixth_sid_device);
+            } else {
+                if (sid_stereo >= 5) {
+                    sixth_sid_list_item = io_source_register(&sixth_sid_device);
+                }
+            }
+            return 0;
+        }
+    }
+    return -1;
+}
+
+int machine_sid7_check_range(unsigned int sid_adr)
+{
+    if (machine_class == VICE_MACHINE_C128) {
+        if ((sid_adr >= 0xd400 && sid_adr <= 0xd4e0) || (sid_adr >= 0xd700 && sid_adr <= 0xdfe0)) {
+            sid_7th_address_start = sid_adr;
+            seventh_sid_device.start_address = sid_adr;
+            sid_7th_address_end = sid_adr + 0x1f;
+            seventh_sid_device.end_address = sid_adr + 0x1f;
+            if (seventh_sid_list_item != NULL) {
+                io_source_unregister(seventh_sid_list_item);
+                seventh_sid_list_item = io_source_register(&seventh_sid_device);
+            } else {
+                if (sid_stereo >= 6) {
+                    seventh_sid_list_item = io_source_register(&seventh_sid_device);
+                }
+            }
+            return 0;
+        }
+    } else {
+        if (sid_adr >= 0xd400 && sid_adr <= 0xdfe0) {
+            sid_7th_address_start = sid_adr;
+            seventh_sid_device.start_address = sid_adr;
+            sid_7th_address_end = sid_adr + 0x1f;
+            seventh_sid_device.end_address = sid_adr + 0x1f;
+            if (seventh_sid_list_item != NULL) {
+                io_source_unregister(seventh_sid_list_item);
+                seventh_sid_list_item = io_source_register(&seventh_sid_device);
+            } else {
+                if (sid_stereo >= 6) {
+                    seventh_sid_list_item = io_source_register(&seventh_sid_device);
+                }
+            }
+            return 0;
+        }
+    }
+    return -1;
+}
+
+int machine_sid8_check_range(unsigned int sid_adr)
+{
+    if (machine_class == VICE_MACHINE_C128) {
+        if ((sid_adr >= 0xd400 && sid_adr <= 0xd4e0) || (sid_adr >= 0xd700 && sid_adr <= 0xdfe0)) {
+            sid_8th_address_start = sid_adr;
+            eigth_sid_device.start_address = sid_adr;
+            sid_8th_address_end = sid_adr + 0x1f;
+            eigth_sid_device.end_address = sid_adr + 0x1f;
+            if (eigth_sid_list_item != NULL) {
+                io_source_unregister(eigth_sid_list_item);
+                eigth_sid_list_item = io_source_register(&eigth_sid_device);
+            } else {
+                if (sid_stereo >= 7) {
+                    eigth_sid_list_item = io_source_register(&eigth_sid_device);
+                }
+            }
+            return 0;
+        }
+    } else {
+        if (sid_adr >= 0xd400 && sid_adr <= 0xdfe0) {
+            sid_8th_address_start = sid_adr;
+            eigth_sid_device.start_address = sid_adr;
+            sid_8th_address_end = sid_adr + 0x1f;
+            eigth_sid_device.end_address = sid_adr + 0x1f;
+            if (eigth_sid_list_item != NULL) {
+                io_source_unregister(eigth_sid_list_item);
+                eigth_sid_list_item = io_source_register(&eigth_sid_device);
+            } else {
+                if (sid_stereo >= 7) {
+                    eigth_sid_list_item = io_source_register(&eigth_sid_device);
+                }
+            }
+            return 0;
+        }
+    }
+    return -1;
+}
+
+
 void machine_sid2_enable(int val)
 {
     if (stereo_sid_list_item != NULL) {
@@ -270,6 +526,22 @@ void machine_sid2_enable(int val)
         io_source_unregister(quad_sid_list_item);
         quad_sid_list_item = NULL;
     }
+    if (fifth_sid_list_item != NULL) {
+        io_source_unregister(fifth_sid_list_item);
+        fifth_sid_list_item = NULL;
+    }
+    if (sixth_sid_list_item != NULL) {
+        io_source_unregister(sixth_sid_list_item);
+        sixth_sid_list_item = NULL;
+    }
+    if (seventh_sid_list_item != NULL) {
+        io_source_unregister(seventh_sid_list_item);
+        seventh_sid_list_item = NULL;
+    }
+    if (eigth_sid_list_item != NULL) {
+        io_source_unregister(eigth_sid_list_item);
+        eigth_sid_list_item = NULL;
+    }
 
     if (val >= 1) {
         stereo_sid_list_item = io_source_register(&stereo_sid_device);
@@ -279,6 +551,18 @@ void machine_sid2_enable(int val)
     }
     if (val >= 3) {
         quad_sid_list_item = io_source_register(&quad_sid_device);
+    }
+    if (val >= 4) {
+        fifth_sid_list_item = io_source_register(&fifth_sid_device);
+    }
+    if (val >= 5) {
+        sixth_sid_list_item = io_source_register(&sixth_sid_device);
+    }
+    if (val >= 6) {
+        seventh_sid_list_item = io_source_register(&seventh_sid_device);
+    }
+    if (val >= 7) {
+        eigth_sid_list_item = io_source_register(&eigth_sid_device);
     }
 }
 

@@ -91,6 +91,46 @@ int machine_sid4_check_range(unsigned int sid4_adr)
     return -1;
 }
 
+int machine_sid5_check_range(unsigned int sid4_adr)
+{
+    if (sid4_adr >= 0xd400 && sid4_adr <= 0xdfe0) {
+        sid_5th_address_start = sid4_adr;
+        sid_5th_address_end = sid4_adr + 0x1f;
+        return 0;
+    }
+    return -1;
+}
+
+int machine_sid6_check_range(unsigned int sid4_adr)
+{
+    if (sid4_adr >= 0xd400 && sid4_adr <= 0xdfe0) {
+        sid_6th_address_start = sid4_adr;
+        sid_6th_address_end = sid4_adr + 0x1f;
+        return 0;
+    }
+    return -1;
+}
+
+int machine_sid7_check_range(unsigned int sid4_adr)
+{
+    if (sid4_adr >= 0xd400 && sid4_adr <= 0xdfe0) {
+        sid_7th_address_start = sid4_adr;
+        sid_7th_address_end = sid4_adr + 0x1f;
+        return 0;
+    }
+    return -1;
+}
+
+int machine_sid8_check_range(unsigned int sid4_adr)
+{
+    if (sid4_adr >= 0xd400 && sid4_adr <= 0xdfe0) {
+        sid_8th_address_start = sid4_adr;
+        sid_8th_address_end = sid4_adr + 0x1f;
+        return 0;
+    }
+    return -1;
+}
+
 void machine_sid2_enable(int val)
 {
 }

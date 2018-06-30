@@ -68,6 +68,14 @@ unsigned int sid_triple_address_start;
 unsigned int sid_triple_address_end;
 unsigned int sid_quad_address_start;
 unsigned int sid_quad_address_end;
+unsigned int sid_5th_address_start;
+unsigned int sid_5th_address_end;
+unsigned int sid_6th_address_start;
+unsigned int sid_6th_address_end;
+unsigned int sid_7th_address_start;
+unsigned int sid_7th_address_end;
+unsigned int sid_8th_address_start;
+unsigned int sid_8th_address_end;
 static int sid_engine;
 #ifdef HAVE_HARDSID
 static int sid_hardsid_main;
@@ -195,6 +203,66 @@ int sid_set_sid_quad_address(int val, void *param)
 
     sid_quad_address_start = sid4_adr;
     sid_quad_address_end = sid_quad_address_start + 32;
+    return 0;
+}
+
+int sid_set_sid_5th_address(int val, void *param)
+{
+    unsigned int sid_adr;
+
+    sid_adr = (unsigned int)val;
+
+    if (machine_sid5_check_range(sid_adr) < 0) {
+        return -1;
+    }
+
+    sid_5th_address_start = sid_adr;
+    sid_5th_address_end = sid_adr + 32;
+    return 0;
+}
+
+int sid_set_sid_6th_address(int val, void *param)
+{
+    unsigned int sid_adr;
+
+    sid_adr = (unsigned int)val;
+
+    if (machine_sid6_check_range(sid_adr) < 0) {
+        return -1;
+    }
+
+    sid_6th_address_start = sid_adr;
+    sid_6th_address_end = sid_adr + 32;
+    return 0;
+}
+
+int sid_set_sid_7th_address(int val, void *param)
+{
+    unsigned int sid_adr;
+
+    sid_adr = (unsigned int)val;
+
+    if (machine_sid7_check_range(sid_adr) < 0) {
+        return -1;
+    }
+
+    sid_7th_address_start = sid_adr;
+    sid_7th_address_end = sid_adr + 32;
+    return 0;
+}
+
+int sid_set_sid_8th_address(int val, void *param)
+{
+    unsigned int sid_adr;
+
+    sid_adr = (unsigned int)val;
+
+    if (machine_sid8_check_range(sid_adr) < 0) {
+        return -1;
+    }
+
+    sid_8th_address_start = sid_adr;
+    sid_8th_address_end = sid_adr + 32;
     return 0;
 }
 

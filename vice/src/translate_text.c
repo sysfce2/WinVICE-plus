@@ -14736,6 +14736,74 @@ translate_t string_table[] = {
 #endif
 
 /* sid/sid-cmdline-options.c */
+/* en */ {IDCLS_SPECIFY_SID_5_ADDRESS,    N_("Specify base address for 5th SID")},
+#ifdef HAS_TRANSLATION
+/* da */ {IDCLS_SPECIFY_SID_5_ADDRESS_DA, ""},  /* fuzzy */
+/* de */ {IDCLS_SPECIFY_SID_5_ADDRESS_DE, ""},  /* fuzzy */
+/* es */ {IDCLS_SPECIFY_SID_5_ADDRESS_ES, ""},  /* fuzzy */
+/* fr */ {IDCLS_SPECIFY_SID_5_ADDRESS_FR, ""},  /* fuzzy */
+/* hu */ {IDCLS_SPECIFY_SID_5_ADDRESS_HU, ""},  /* fuzzy */
+/* it */ {IDCLS_SPECIFY_SID_5_ADDRESS_IT, ""},  /* fuzzy */
+/* ko */ {IDCLS_SPECIFY_SID_5_ADDRESS_KO, ""},  /* fuzzy */
+/* nl */ {IDCLS_SPECIFY_SID_5_ADDRESS_NL, ""},  /* fuzzy */
+/* pl */ {IDCLS_SPECIFY_SID_5_ADDRESS_PL, ""},  /* fuzzy */
+/* ru */ {IDCLS_SPECIFY_SID_5_ADDRESS_RU, ""},  /* fuzzy */
+/* sv */ {IDCLS_SPECIFY_SID_5_ADDRESS_SV, ""},  /* fuzzy */
+/* tr */ {IDCLS_SPECIFY_SID_5_ADDRESS_TR, ""},  /* fuzzy */
+#endif
+
+/* sid/sid-cmdline-options.c */
+/* en */ {IDCLS_SPECIFY_SID_6_ADDRESS,    N_("Specify base address for 6th SID")},
+#ifdef HAS_TRANSLATION
+/* da */ {IDCLS_SPECIFY_SID_6_ADDRESS_DA, ""},  /* fuzzy */
+/* de */ {IDCLS_SPECIFY_SID_6_ADDRESS_DE, ""},  /* fuzzy */
+/* es */ {IDCLS_SPECIFY_SID_6_ADDRESS_ES, ""},  /* fuzzy */
+/* fr */ {IDCLS_SPECIFY_SID_6_ADDRESS_FR, ""},  /* fuzzy */
+/* hu */ {IDCLS_SPECIFY_SID_6_ADDRESS_HU, ""},  /* fuzzy */
+/* it */ {IDCLS_SPECIFY_SID_6_ADDRESS_IT, ""},  /* fuzzy */
+/* ko */ {IDCLS_SPECIFY_SID_6_ADDRESS_KO, ""},  /* fuzzy */
+/* nl */ {IDCLS_SPECIFY_SID_6_ADDRESS_NL, ""},  /* fuzzy */
+/* pl */ {IDCLS_SPECIFY_SID_6_ADDRESS_PL, ""},  /* fuzzy */
+/* ru */ {IDCLS_SPECIFY_SID_6_ADDRESS_RU, ""},  /* fuzzy */
+/* sv */ {IDCLS_SPECIFY_SID_6_ADDRESS_SV, ""},  /* fuzzy */
+/* tr */ {IDCLS_SPECIFY_SID_6_ADDRESS_TR, ""},  /* fuzzy */
+#endif
+
+/* sid/sid-cmdline-options.c */
+/* en */ {IDCLS_SPECIFY_SID_7_ADDRESS,    N_("Specify base address for 7th SID")},
+#ifdef HAS_TRANSLATION
+/* da */ {IDCLS_SPECIFY_SID_7_ADDRESS_DA, ""},  /* fuzzy */
+/* de */ {IDCLS_SPECIFY_SID_7_ADDRESS_DE, ""},  /* fuzzy */
+/* es */ {IDCLS_SPECIFY_SID_7_ADDRESS_ES, ""},  /* fuzzy */
+/* fr */ {IDCLS_SPECIFY_SID_7_ADDRESS_FR, ""},  /* fuzzy */
+/* hu */ {IDCLS_SPECIFY_SID_7_ADDRESS_HU, ""},  /* fuzzy */
+/* it */ {IDCLS_SPECIFY_SID_7_ADDRESS_IT, ""},  /* fuzzy */
+/* ko */ {IDCLS_SPECIFY_SID_7_ADDRESS_KO, ""},  /* fuzzy */
+/* nl */ {IDCLS_SPECIFY_SID_7_ADDRESS_NL, ""},  /* fuzzy */
+/* pl */ {IDCLS_SPECIFY_SID_7_ADDRESS_PL, ""},  /* fuzzy */
+/* ru */ {IDCLS_SPECIFY_SID_7_ADDRESS_RU, ""},  /* fuzzy */
+/* sv */ {IDCLS_SPECIFY_SID_7_ADDRESS_SV, ""},  /* fuzzy */
+/* tr */ {IDCLS_SPECIFY_SID_7_ADDRESS_TR, ""},  /* fuzzy */
+#endif
+
+/* sid/sid-cmdline-options.c */
+/* en */ {IDCLS_SPECIFY_SID_8_ADDRESS,    N_("Specify base address for 8th SID")},
+#ifdef HAS_TRANSLATION
+/* da */ {IDCLS_SPECIFY_SID_8_ADDRESS_DA, ""},  /* fuzzy */
+/* de */ {IDCLS_SPECIFY_SID_8_ADDRESS_DE, ""},  /* fuzzy */
+/* es */ {IDCLS_SPECIFY_SID_8_ADDRESS_ES, ""},  /* fuzzy */
+/* fr */ {IDCLS_SPECIFY_SID_8_ADDRESS_FR, ""},  /* fuzzy */
+/* hu */ {IDCLS_SPECIFY_SID_8_ADDRESS_HU, ""},  /* fuzzy */
+/* it */ {IDCLS_SPECIFY_SID_8_ADDRESS_IT, ""},  /* fuzzy */
+/* ko */ {IDCLS_SPECIFY_SID_8_ADDRESS_KO, ""},  /* fuzzy */
+/* nl */ {IDCLS_SPECIFY_SID_8_ADDRESS_NL, ""},  /* fuzzy */
+/* pl */ {IDCLS_SPECIFY_SID_8_ADDRESS_PL, ""},  /* fuzzy */
+/* ru */ {IDCLS_SPECIFY_SID_8_ADDRESS_RU, ""},  /* fuzzy */
+/* sv */ {IDCLS_SPECIFY_SID_8_ADDRESS_SV, ""},  /* fuzzy */
+/* tr */ {IDCLS_SPECIFY_SID_8_ADDRESS_TR, ""},  /* fuzzy */
+#endif
+
+/* sid/sid-cmdline-options.c */
 /* en */ {IDCLS_ENABLE_SID_FILTERS,    N_("Emulate SID filters")},
 #ifdef HAS_TRANSLATION
 /* da */ {IDCLS_ENABLE_SID_FILTERS_DA, "Emulér SID-filtre"},
