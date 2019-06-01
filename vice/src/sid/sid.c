@@ -770,7 +770,7 @@ int sid_sound_machine_calculate_samples(sound_t **psid, int16_t *pbuf, int nr, i
         tmp_buf4 = getbuf4(2 * nr);
         tmp_buf5 = getbuf5(2 * nr);
         tmp_buf6 = getbuf6(2 * nr);
-        tmp_buf7 = getbuf6(2 * nr);
+        tmp_buf7 = getbuf7(2 * nr);
         tmp_nr = sid_engine.calculate_samples(psid[0], tmp_buf1, nr, 1, &tmp_delta_t);
         tmp_delta_t = *delta_t;
         tmp_nr = sid_engine.calculate_samples(psid[2], tmp_buf2, nr, 1, &tmp_delta_t);
