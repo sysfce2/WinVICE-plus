@@ -483,9 +483,9 @@ void raster_set_title(raster_t *raster, const char *name)
     char *extra_title_text = archdep_extra_title_text();
 
     if (extra_title_text) {
-        title = util_concat("VICE: ", name, extra_title_text, NULL);
+        title = util_concat("WinVICE+: ", name, extra_title_text, NULL);
     } else {
-        title = util_concat("VICE: ", name, NULL);
+        title = util_concat("WinVICE+: ", name, NULL);
     }
     video_viewport_title_set(raster->canvas, title);
 
