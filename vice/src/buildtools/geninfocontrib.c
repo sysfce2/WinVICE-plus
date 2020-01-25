@@ -738,14 +738,14 @@ static void generate_readme(char *in_path, char *out_path, char *filename)
     char *tmpname;
 
     sprintf(line_buffer, "%s%s", in_path, filename);
-    infile = fopen(line_buffer, "rb");
+    infile = fopen(line_buffer, "r");
     if (infile == NULL) {
         printf("cannot open %s for reading\n", line_buffer);
         return;
     }
 
     sprintf(line_buffer, "%s%s.tmp", out_path, filename);
-    outfile = fopen(line_buffer, "wb");
+    outfile = fopen(line_buffer, "w");
     if (outfile == NULL) {
         printf("cannot open %s for writing\n", line_buffer);
         fclose(infile);
