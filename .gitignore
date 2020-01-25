@@ -1,3 +1,5 @@
+*.o
+*.a
 vice/*.apk
 vice/*.gz
 vice/.aclocal.out
