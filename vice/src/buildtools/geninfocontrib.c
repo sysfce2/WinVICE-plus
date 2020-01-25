@@ -636,7 +636,7 @@ static void generate_authors(char *out_path, char *filename)
     int i = 0;
 
     sprintf(line_buffer, "%s%s", out_path, filename);
-    outfile = fopen(line_buffer, "wb");
+    outfile = fopen(line_buffer, "w");
 
     if (outfile == NULL) {
         printf("cannot open %s for writing\n", line_buffer);
