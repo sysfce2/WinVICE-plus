@@ -636,7 +636,7 @@ static void generate_authors(char *out_path, char *filename)
     int i = 0;
 
     sprintf(line_buffer, "%s%s", out_path, filename);
-    outfile = fopen(line_buffer, "wb");
+    outfile = fopen(line_buffer, "w");
 
     if (outfile == NULL) {
         printf("cannot open %s for writing\n", line_buffer);
@@ -680,7 +680,7 @@ static void generate_osx_credits_html(char *out_path, char *filename)
     int i = 0;
 
     sprintf(line_buffer, "%s%s", out_path, filename);
-    outfile = fopen(line_buffer, "wb");
+    outfile = fopen(line_buffer, "w");
 
     if (outfile == NULL) {
         printf("cannot open %s for writing\n", line_buffer);
@@ -738,14 +738,14 @@ static void generate_readme(char *in_path, char *out_path, char *filename)
     char *tmpname;
 
     sprintf(line_buffer, "%s%s", in_path, filename);
-    infile = fopen(line_buffer, "rb");
+    infile = fopen(line_buffer, "r");
     if (infile == NULL) {
         printf("cannot open %s for reading\n", line_buffer);
         return;
     }
 
     sprintf(line_buffer, "%s%s.tmp", out_path, filename);
-    outfile = fopen(line_buffer, "wb");
+    outfile = fopen(line_buffer, "w");
     if (outfile == NULL) {
         printf("cannot open %s for writing\n", line_buffer);
         fclose(infile);
@@ -833,14 +833,14 @@ static void generate_index_html(char *in_path, char *out_path, char *filename)
     char *tmpname;
 
     sprintf(line_buffer, "%s%s", in_path, filename);
-    infile = fopen(line_buffer, "rb");
+    infile = fopen(line_buffer, "r");
     if (infile == NULL) {
         printf("cannot open %s for reading\n", line_buffer);
         return;
     }
 
     sprintf(line_buffer, "%s%s.tmp", out_path, filename);
-    outfile = fopen(line_buffer, "wb");
+    outfile = fopen(line_buffer, "w");
     if (outfile == NULL) {
         printf("cannot open %s for writing\n", line_buffer);
         fclose(infile);
@@ -929,14 +929,14 @@ static void generate_vice_1(char *in_path, char *out_path, char *filename)
     int line_size;
 
     sprintf(line_buffer, "%s%s", in_path, filename);
-    infile = fopen(line_buffer, "rb");
+    infile = fopen(line_buffer, "r");
     if (infile == NULL) {
         printf("cannot open %s for reading\n", line_buffer);
         return;
     }
 
     sprintf(line_buffer, "%s%s.tmp", out_path, filename);
-    outfile = fopen(line_buffer, "wb");
+    outfile = fopen(line_buffer, "w");
     if (outfile == NULL) {
         printf("cannot open %s for writing\n", line_buffer);
         fclose(infile);
