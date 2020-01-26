@@ -272,7 +272,9 @@ static void display_speed(int num_frames)
     speed_index = 100.0 * diff_clk / (cycles_per_sec * diff_sec);
 
     if (!console_mode && machine_class != VICE_MACHINE_VSID) {
-        vsyncarch_display_speed(speed_index, frame_rate, warp_mode_enabled);
+        /* FIXME: It makes no sense to display the real speed and frame rate
+        as long as the values oscillate when the output is smooth. */
+        //vsyncarch_display_speed(speed_index, frame_rate, warp_mode_enabled);
     }
 
     speed_eval_prev_clk = maincpu_clk;
