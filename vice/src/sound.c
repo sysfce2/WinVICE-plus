@@ -932,7 +932,17 @@ static int sid_init(void)
     /* "No limit" doesn't make sense for cycle based sound engines,
        which have a fixed sampling rate. */
     speed_factor = speed_percent ? speed_percent : 100;
-    speed = sample_rate * 100 / speed_factor;
+    /* FIXME: This quick fix, though being helpful for people like me
+       having the sound bug at 50 Hz refresh rate, is REALLY dirty at
+       the moment! Things to do:
+       - Make speed adjustment switchable through UI (use commented out
+         original code in disabled state)
+       - Calculate factor with defined values in code
+       - Detect and support NTSC too
+       - Incorporate vsync.c
+       - Analyze the real problem :-) */
+    speed = sample_rate * 100 / (speed_factor * 0.99751534638994446068401052323882);
+    //speed = sample_rate * 100 / speed_factor;
 
     for (c = 0; c < snddata.sound_chip_channels; c++) {
         if (!sound_machine_init(snddata.psid[c], speed, cycles_per_sec)) {
