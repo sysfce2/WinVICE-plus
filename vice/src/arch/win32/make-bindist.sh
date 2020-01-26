@@ -98,6 +98,10 @@ do
   $STRIP src/$i$EXT.exe
   cp src/$i$EXT.exe $WINVICE/$i.exe
 done
+
+# Copy required MinGW libraries into bindist directory
+cp `ntldd -R $WINVICE/x64sc.exe|gawk '/\\\\bin\\\\/{print $3;}'|cygpath -f -` $WINVICE
+
 cp -a $TOPSRCDIR/data/C128 $TOPSRCDIR/data/C64 $TOPSRCDIR/data/C64DTV $WINVICE
 cp -a $TOPSRCDIR/data/CBM-II $TOPSRCDIR/data/DRIVES $TOPSRCDIR/data/PET $WINVICE
 cp -a $TOPSRCDIR/data/PLUS4 $TOPSRCDIR/data/SCPU64 $TOPSRCDIR/data/PRINTER $WINVICE
