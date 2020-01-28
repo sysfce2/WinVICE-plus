@@ -30,6 +30,7 @@
 #include "vice.h"
 
 #include <assert.h>
+#include <stdbool.h>
 #include <stdio.h>
 #include <string.h>
 #include <windows.h>
@@ -1186,6 +1187,7 @@ int ui_emulation_is_paused(void)
 /* ------------------------------------------------------------------------- */
 /* Display the current emulation speed.  */
 static int statustext_display_time = 0;
+static bool is_statustext_currently_indicating_speed = false;
 
 void ui_display_speed(float percent, float framerate, int warp_flag)
 {
@@ -1206,12 +1208,34 @@ void ui_display_speed(float percent, float framerate, int warp_flag)
         if (statustext_display_time == 0) {
             statusbar_setstatustext("");
         }
+
+        /* Display of real speed and frame rate would have been
+           overwritten by the temporary text */
+        if (is_statustext_currently_indicating_speed) {
+            is_statustext_currently_indicating_speed = false;
+        }
     }
 
     /* Show real speed and frame rate in status bar when no temporary
        text is being displayed (even if it just faded out above) */
     if (statustext_display_time == 0) {
-        statusbar_setstatustext(st_buf);
+
+        /* FIXME: It makes no sense to display the real speed and frame
+        rate as long as the values oscillate when the output is smooth
+        not being in warp mode. During warp mode, sense is given for
+        benchmarking purposes. */
+        if (warp_flag) {
+            statusbar_setstatustext(st_buf);
+            is_statustext_currently_indicating_speed = true;
+        } else {
+            
+            /* Clear statustext only once and get the ability not to
+               overwrite other non-temporary texts as a bonus */
+            if (is_statustext_currently_indicating_speed) {
+                statusbar_setstatustext("");
+                is_statustext_currently_indicating_speed = false;
+            }
+        }
     }
 }
 
