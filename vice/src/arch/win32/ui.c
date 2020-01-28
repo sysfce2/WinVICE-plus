@@ -1190,27 +1190,28 @@ static int statustext_display_time = 0;
 void ui_display_speed(float percent, float framerate, int warp_flag)
 {
     TCHAR st_buf[80];
-    TCHAR *st_title, *st_warp;
-    int index;
+    TCHAR *st_warp;
 
     if (warp_flag) {
         st_warp = TEXT(" (warp)");
     } else {
         st_warp = TEXT("");
     }
-    for (index = 0; index < number_of_windows; index++) {
-        st_title = hwnd_titles[index];
 
-        lib_sntprintf(st_buf, 80, intl_speed_at_text, st_title, (int)(percent + .5), (int)(framerate + .5), st_warp);
+    lib_sntprintf(st_buf, 80, intl_speed_at_text, TEXT("WinVICE+"), (int)(percent + .5), (int)(framerate + .5), st_warp);
 
-        SetWindowText(window_handles[index], st_buf);
-    }
     
     if (statustext_display_time > 0) {
         statustext_display_time--;
         if (statustext_display_time == 0) {
             statusbar_setstatustext("");
         }
+    }
+
+    /* Show real speed and frame rate in status bar when no temporary
+       text is being displayed (even if it just faded out above) */
+    if (statustext_display_time == 0) {
+        statusbar_setstatustext(st_buf);
     }
 }
 
