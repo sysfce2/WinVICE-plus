@@ -39,6 +39,10 @@ extern int sid_common_resources_init(void);
 extern int sid_set_sid_stereo_address(int val, void *param);
 extern int sid_set_sid_triple_address(int val, void *param);
 extern int sid_set_sid_quad_address(int val, void *param);
+extern int sid_set_sid_5th_address(int val, void *param);
+extern int sid_set_sid_6th_address(int val, void *param);
+extern int sid_set_sid_7th_address(int val, void *param);
+extern int sid_set_sid_8th_address(int val, void *param);
 
 extern int sid_stereo;
 extern int checking_sid_stereo;
@@ -48,5 +52,14 @@ extern unsigned int sid_triple_address_start;
 extern unsigned int sid_triple_address_end;
 extern unsigned int sid_quad_address_start;
 extern unsigned int sid_quad_address_end;
+
+extern unsigned int sid_5th_address_start;
+extern unsigned int sid_5th_address_end;
+extern unsigned int sid_6th_address_start;
+extern unsigned int sid_6th_address_end;
+extern unsigned int sid_7th_address_start;
+extern unsigned int sid_7th_address_end;
+extern unsigned int sid_8th_address_start;
+extern unsigned int sid_8th_address_end;
 
 #endif

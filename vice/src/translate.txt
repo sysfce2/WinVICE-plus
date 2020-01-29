@@ -2556,6 +2556,18 @@ IDCLS_SPECIFY_SID_3_ADDRESS
 IDCLS_SPECIFY_SID_4_ADDRESS
 
 /* sid/sid-cmdline-options.c */
+IDCLS_SPECIFY_SID_5_ADDRESS
+
+/* sid/sid-cmdline-options.c */
+IDCLS_SPECIFY_SID_6_ADDRESS
+
+/* sid/sid-cmdline-options.c */
+IDCLS_SPECIFY_SID_7_ADDRESS
+
+/* sid/sid-cmdline-options.c */
+IDCLS_SPECIFY_SID_8_ADDRESS
+
+/* sid/sid-cmdline-options.c */
 IDCLS_ENABLE_SID_FILTERS
 
 /* sid/sid-cmdline-options.c */
